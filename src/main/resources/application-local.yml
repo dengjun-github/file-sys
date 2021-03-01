@@ -1,0 +1,37 @@
+server:
+  port: 9010
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://106.13.102.222:3306/file-sys?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useServerPrepStmts=true&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 123456
+    druid:
+      initial-size: 1
+      max-active: 10
+      min-idle: 1
+      max-wait: 30000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 10
+      validation-query: SELECT 1
+      validation-query-timeout: 3000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,slf4j
+      filter:
+        stat:
+          slow-sql-millis: 5000
+          merge-sql: true
+      connection-properties:
+      # 合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+
+
+sys:
+  file-upload-path: E:\download\pic
+  host: http://localhost:9010

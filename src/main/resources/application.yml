@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: file-sys
+  profiles:
+    active: local
